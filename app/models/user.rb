@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
     has_many :posts 
-    mount_uploader :avatar, AvatarUploader
+      mount_uploader :avatar, AvatarUploader
     has_many :comments
 
     def role?(base_role)
