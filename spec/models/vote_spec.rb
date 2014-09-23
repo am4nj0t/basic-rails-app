@@ -1,18 +1,24 @@
+require 'rails_helper'
+
 describe Vote do
-	
+
 	describe "validations" do
 
-		before do
-			@vote = Vote.create(title: 'vote title', body: 'vote body')
-			3.times {@vote.valid.create(value: 1)}
-			2.times {@vote.valid.create(value: -1)}
+  		before do
+  			@first_vote = Vote.new(value: -1)
+  			@second_vote = Vote.new(value: 1)
 		end	
-	
-		describe "value validation" do
-			it "only allows -1 or 1 as values" do
-				expect( @vote.validations ).to eq(1),
-				expect( @vote.validations ).to eq(-1)		
+
+		describe "first_validation" do
+			it "only allows -1 as a value" do
+				expect(@first_vote.value).to eq(-1)
 			end
 		end
-	end			
+
+		describe "second_validation" do
+			it "only allows 1 as a value" do
+				expect(@second_vote.value).to eq(1)
+			end
+		end
+	end					
 end
