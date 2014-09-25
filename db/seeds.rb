@@ -59,7 +59,7 @@ end
 admin = User.new(
 	name: 'Admin User',
 	email: 'admin@example.com',
-	password: 'helloworld',
+	password: 'password',
 	role: 'admin'
 	)
 	admin.skip_confirmation!
