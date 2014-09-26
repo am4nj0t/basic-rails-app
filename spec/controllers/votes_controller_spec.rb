@@ -14,7 +14,6 @@ describe VotesController do
 
 	describe '#up_vote' do
 		it "adds an up-vote to the post" do
-			get :up_vote
 			expect{
 				post( :up_vote, post_id: @post.id )
 			}.to change{ @post.up_votes }.by 1
@@ -23,10 +22,9 @@ describe VotesController do
 
 	describe '#down_vote' do
 		it "adds a down-vote to the post" do
-			get :down_vote 
 			expect{
 				post( :down_vote, post_id: @post.id )
-			}.to change{ @post.down_votes }.by -1
+			}.to change{ @post.down_votes }.by 1
 		end
 	end		
 end			

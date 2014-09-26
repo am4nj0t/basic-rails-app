@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 
 	def create
 		@post = Post.find(params[:post_id])
-		favorite = current.user.favorites.build(post: @post)
+		favorite = current_user.favorites.build(post: @post)
 
 		authorize favorite 
 
