@@ -8,11 +8,11 @@ class FavoritesController < ApplicationController
 
 		if favorite.save
 			flash[:notice] = "Favorited successfully."
-			redirect_to [@post.topic, @post]
 		else
 			flash[:error] = "Unable to favorite. Please try again."
-			redirect_to [@post.topic, @post]
 		end
+
+		redirect_to [@post.topic, @post]
 	end	
 
 	def destroy
@@ -23,10 +23,10 @@ class FavoritesController < ApplicationController
 
 		if favorite.destroy
 			flash[:success] = "Deleted favorite"
-			redirect_to [@post.topic, @post]
 		else
 			flash[:error] = "Unable to delete. Please try again."
-			redirect_to [@post.topic, @post]
 		end	
+
+		redirect_to [@post.topic, @post]
 	end		
 end

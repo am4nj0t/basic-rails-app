@@ -10,6 +10,13 @@
 			<%= @post.user.name %>
 		</small>	
 		<p><%= markdown @post.body %></p>
+		
+		<div>
+			<%= render :partial => "comments/comment" %>
+		</div>
+		<div>
+			<%= render "comments/form" %>
+		</div>
 	</div>
 	<div class="col-md-4">	
 		<% if policy(@post).edit? %>
@@ -27,13 +34,7 @@
 			</div>	
 				<%= render partial: 'favorites/favorite', locals: { post: @post } %>	
 	</div>
-
-	<div>
-		<%= render :partial => "comments/comment" %>
-	</div>
-	<div>
-		<%= render "comments/form" %>
-	</div>	
+	
 </div>	
 
 
