@@ -49,7 +49,7 @@ gem 'better_errors'
 
 group :test do
 	gem 'rspec-rails'
-	gem 'capybara'
+	gem 'capybara', '~> 2.3.0'
 end	
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
