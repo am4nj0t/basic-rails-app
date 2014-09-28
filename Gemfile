@@ -50,6 +50,8 @@ gem 'better_errors'
 group :test do
 	gem 'rspec-rails'
 	gem 'capybara', '~> 2.3.0'
+	gem 'database_cleaner'
+	gem 'factory_girl_rails', '~> 4.0'
 end	
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
