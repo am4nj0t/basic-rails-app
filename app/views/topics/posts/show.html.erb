@@ -8,11 +8,12 @@
 			<%= @post.user.name %>
 		</small>	
 		<p><%= markdown @post.body %></p>
-		
-		<div>
+
+		<h2>Comments</h2>
+		<div class='js-comments'>
 			<%= render partial: => 'comments/comment', collection: @comments %>
 		</div>
-		<div>
+		<div class='new-comment'>
 			<%= render "comments/form" %>
 		</div>
 	</div>
