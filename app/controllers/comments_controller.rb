@@ -14,16 +14,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-  	Rails.logger.info "we made it to create"
-    @post = Post.find(params[:post_id])
-    Rails.logger.info "@post: #{@post.inspect}"
     @comments = @post.comments
-
-    Rails.logger.info "comment params: #{comment_params}"
   	@comment = current_user.comments.build( comment_params )
-    Rails.logger.info "@comment: #{@comment.inspect}"
     @comment.post = @post 
-    Rails.logger.info "@comment: #{@comment.inspect}"
     @new_comment = Comment.new 
 
   	authorize @comment 
