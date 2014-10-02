@@ -14,11 +14,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-  	@post = Post.find(params[:post_id])
+  	Rails.logger.info "we made it to create"
+    @post = Post.find(params[:post_id])
+    Rails.logger.info "@post: #{@post.inspect}"
     @comments = @post.comments
 
-  	@comment = current_user.comments.build(comment_params)
+    Rails.logger.info "comment params: #{comment_params}"
+  	@comment = current_user.comments.build( comment_params )
+    Rails.logger.info "@comment: #{@comment.inspect}"
     @comment.post = @post 
+    Rails.logger.info "@comment: #{@comment.inspect}"
     @new_comment = Comment.new 
 
   	authorize @comment 
@@ -32,16 +37,10 @@ class CommentsController < ApplicationController
     respond_with(@comment) do |format|
       format.html { redirect_to [@post.topic, @post] }
     end  
-  end	
-
-  private
-
-  def comment_params
-    params.require(:comment).permit(:body)
-  end  
+  end	 
 
   def destroy
-    @post = @topic.posts.find(params[:post_id])
+    @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
 
     authorize @comment
@@ -51,8 +50,17 @@ class CommentsController < ApplicationController
       flash[:error] = "Comment couldn't be deleted. Try again."
     end
 
-    respond_with(@comment) do |format|
-      format.html { redirect_to [@post.topic, @post] }
-    end  
-  end        
+      respond_with(@comment) do |format|
+        format.html { redirect_to [@post.topic, @post] }
+      end 
+  end 
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(
+      :body,
+      :post_id
+    )
+  end    
 end
